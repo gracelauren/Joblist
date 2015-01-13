@@ -1,0 +1,26 @@
+<h1>Jobs I've Held</h1>
+
+<p>Here are all the jobs I've had:</p>
+
+<dl>
+  <% @all_jobs.each() do |job| %>
+    <dt><%= job.title() %></dt>
+      <dd>-Duties: <%= job.duties() %></dd>
+      <dd>-Years: <%= job.years() %></dd>
+  <% end %>
+</dl>
+
+<p>Name a job you've been at:</p>
+
+  <form action ="/results" method="post">
+  <label for="title">Title</label>
+  <input id="title" name="title" type="text">
+
+  <label for="duties">Duties</label>
+  <input id="duties" name="duties" type="text">
+
+  <label for="years">Years</label>
+  <input id="years" name="years" type="text">
+
+  <button type="submit">Add Job!</button>
+</form>
