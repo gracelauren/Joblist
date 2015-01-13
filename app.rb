@@ -14,5 +14,15 @@ post('/results') do
   years = params.fetch("years")
   jobs = Jobs.new(title, duties, years)
   jobs.save()
-  erb(:results)
+  redirect '/'
+end
+
+post('/clear') do
+  Jobs.clear()
+  redirect '/'
+end
+
+post('/delete') do
+    Jobs.delete_at_index(params.fetch('hidden_num').to_i)
+  redirect '/'
 end

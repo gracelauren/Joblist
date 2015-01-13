@@ -4,6 +4,7 @@ class Jobs
     @title = title
     @duties = duties
     @years = years
+    @jobs_array = [@title, @duties, @years]
   end
 
   define_method(:title) do
@@ -23,10 +24,14 @@ class Jobs
   end
 
   define_method(:save) do
-    @@all_jobs.push(self)
+    @@all_jobs.push(@jobs_array)
   end
 
   define_singleton_method(:clear) do
     @@all_jobs = []
+  end
+
+  define_singleton_method(:delete_at_index) do |index|
+    @@all_jobs.delete_at(index)
   end
 end

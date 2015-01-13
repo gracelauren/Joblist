@@ -1,14 +1,28 @@
 <h1>Jobs I've Held</h1>
 
 <p>Here are all the jobs I've had:</p>
-
-<dl>
+<% counter = 0 %>
+<% if @all_jobs != nil %>
+<table>
   <% @all_jobs.each() do |job| %>
-    <dt><%= job.title() %></dt>
-      <dd>-Duties: <%= job.duties() %></dd>
-      <dd>-Years: <%= job.years() %></dd>
-  <% end %>
-</dl>
+
+  <tr>
+    <dl>
+      <td>
+        <dt><%= job[0] %></dt>
+          <dd>-<%= job[1] %></dd>
+          <dd>-<%= job[2] %></dd>
+      </td>
+      <form action='/delete' method=post>
+      <td>
+     <input type = 'submit' name='button_id' value='delete'>
+    <%= "<input type='hidden' value=#{counter} name='hidden_num'>" %>
+  </form>
+    </dl>
+  </tr>
+      <% end %>
+      <% end %>
+</table>
 
 <p>Name a job you've been at:</p>
 
@@ -24,3 +38,7 @@
 
   <button type="submit">Add Job!</button>
 </form>
+
+  <form action ="/clear" method="post">
+  <button type="submit">Clear Job History</button>
+  </form>
